@@ -9,6 +9,11 @@ class UserGame extends Model
 {
     use HasFactory;
     protected $table = 'user_games';
+    protected $fillable = [
+        'user_id',  // Allow mass assignment of user_id
+        'game_id',  // Allow mass assignment of game_id
+        'level',    // Allow mass assignment of level
+    ];
 
     public function user()
     {

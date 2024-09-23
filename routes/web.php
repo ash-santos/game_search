@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\UserGameController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,5 +20,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/search', [SearchController::class, 'search'])->name('search');
+
+
+
+Route::get('/add-user-game', [UserGameController::class, 'create'])->name('user-game.create');
+Route::post('/add-user-game', [UserGameController::class, 'store'])->name('user-game.store');
+Route::get('/user/{id}/games', [UserGameController::class, 'getUserGames'])->name('user.games');
+
+
 
 require __DIR__.'/auth.php';
